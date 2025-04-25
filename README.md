@@ -5,6 +5,8 @@ A RESTful API service built with Django and Django REST Framework.
 
 ## Setup
 
+### Option 1: Local Development
+
 1. Clone the repository:
 ```bash
 git clone https://github.com/yourusername/aktos.ai.git
@@ -42,6 +44,34 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+### Option 2: Docker
+
+1. Build the Docker image:
+```bash
+docker build -t aktos-api .
+```
+
+2. Run the container:
+```bash
+docker run -p 8000:8000 aktos-api
+```
+
+The API will be available at:
+- Main API: http://localhost:8000/api/
+- Admin interface: http://localhost:8000/admin/
+- API Documentation: http://localhost:8000/swagger/
+
+To see the logs:
+```bash
+docker logs -f <container_id>
+```
+
+To stop the container:
+```bash
+docker ps  # get the container ID
+docker stop <container_id>
+```
+
 ## API Documentation
 
 The API documentation is available at:
@@ -63,3 +93,4 @@ The API documentation is available at:
 - Django REST Framework
 - SQLite (Database)
 - drf-yasg (API Documentation)
+- Docker
