@@ -1,6 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from ..models import Customer
+from ..filters import CustomerFilter
 from ..schemas.customer import (
     CustomerSerializer,
     CustomerCreateSerializer,
@@ -12,6 +13,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all().order_by('id')
     serializer_class = CustomerSerializer
     http_method_names = ['get', 'post', 'put', 'delete']
+    filterset_class = CustomerFilter
 
     def get_serializer_class(self):
         if self.action == 'create':

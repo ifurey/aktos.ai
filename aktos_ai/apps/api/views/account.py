@@ -1,6 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from ..models import Account
+from ..filters import AccountFilter
 from ..schemas.account import (
     AccountSerializer,
     AccountCreateSerializer,
@@ -11,6 +12,7 @@ from ..schemas.account import (
 class AccountViewSet(viewsets.ModelViewSet):
     queryset = Account.objects.all().order_by('created_at')
     http_method_names = ['get', 'post', 'put', 'delete']
+    filterset_class = AccountFilter
 
     def get_serializer_class(self):
         if self.action == 'create':

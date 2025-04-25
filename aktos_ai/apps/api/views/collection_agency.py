@@ -1,6 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from ..models import CollectionAgency
+from ..filters import CollectionAgencyFilter
 from ..schemas.collection_agency import (
     CollectionAgencySerializer,
     CollectionAgencyCreateSerializer,
@@ -12,6 +13,7 @@ class CollectionAgencyViewSet(viewsets.ModelViewSet):
     queryset = CollectionAgency.objects.all().order_by('name')
     serializer_class = CollectionAgencySerializer
     http_method_names = ['get', 'post', 'put', 'delete']
+    filterset_class = CollectionAgencyFilter
 
     def get_serializer_class(self):
         if self.action == 'create':
