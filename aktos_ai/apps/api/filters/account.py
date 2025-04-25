@@ -8,7 +8,7 @@ class AccountFilter(django_filters.FilterSet):
     status = django_filters.CharFilter(field_name='status', lookup_expr='iexact')
     customer_name = django_filters.CharFilter(field_name='customer__name', lookup_expr='icontains')
     customer_id = django_filters.NumberFilter(field_name='customer__id')
-    client_id = django_filters.NumberFilter(field_name='client__id')
+    client_id = django_filters.CharFilter(field_name='client__id')
     collection_agency_id = django_filters.NumberFilter(field_name='client__collection_agency__id')
 
     class Meta:

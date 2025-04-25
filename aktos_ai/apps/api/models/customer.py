@@ -5,6 +5,7 @@ from django.core.validators import RegexValidator
 class Customer(models.Model):
     """Customer model. The person(s)/entities that owe a debt."""
     id = models.AutoField(primary_key=True) 
+    # TODO: Here we need to support no person entities with no SSN.
     ssn = models.CharField(
         max_length=11,
         unique=True,

@@ -15,6 +15,9 @@ class CustomerViewSet(viewsets.ModelViewSet):
     http_method_names = ['get', 'post', 'put', 'delete']
     filterset_class = CustomerFilter
 
+    # TODO: Customer view need a secure way to filter by SSN. CustomerFilter does not include this as can expose SSN
+    # to unauthorized users.
+
     def get_serializer_class(self):
         if self.action == 'create':
             return CustomerCreateSerializer
@@ -39,4 +42,4 @@ class CustomerViewSet(viewsets.ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
         self.perform_destroy(instance)
-        return Response(status=status.HTTP_204_NO_CONTENT) 
+        return Response(status=status.HTTP_204_NO_CONTENT)
