@@ -3,6 +3,30 @@
 Aktos Engineering Take Home made by Ignacio Furey 
 A RESTful API service built with Django and Django REST Framework.
 
+## Whats missing
+
+### Non functional requiriments
+
+#### 1. Security
+- **Authentication and Authorization**
+- **Data Protection**
+- **Attack Prevention**
+
+#### 2. Monitoring & Logging
+- **System Monitoring**
+- **Logging**
+- **Alerting**
+
+#### 3. Data Integrity
+- **Proper DB** not SQLlite
+
+#### 4. Pre-Post commits
+- **Linter**
+- **Migrations integrity check**
+
+#### 5. Versioning
+- **Package manager**
+
 ## Setup
 
 ### Option 1: Local Development
