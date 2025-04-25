@@ -55,7 +55,7 @@ class CustomerTests(BaseAPITestCase):
 
     def test_retrieve_customer(self):
         customer = self.create_customer()
-        url = reverse('api:customer-detail', args=[customer.ssn])
+        url = reverse('api:customer-detail', args=[customer.id])
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['name'], customer.name)
@@ -68,7 +68,7 @@ class CustomerTests(BaseAPITestCase):
 
     def test_update_customer(self):
         customer = self.create_customer()
-        url = reverse('api:customer-detail', args=[customer.ssn])
+        url = reverse('api:customer-detail', args=[customer.id])
         data = {
             'name': 'Updated Customer',
             'address': '456 Test St'
@@ -90,7 +90,7 @@ class CustomerTests(BaseAPITestCase):
 
     def test_delete_customer(self):
         customer = self.create_customer()
-        url = reverse('api:customer-detail', args=[customer.ssn])
+        url = reverse('api:customer-detail', args=[customer.id])
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Customer.objects.count(), 0)
@@ -102,6 +102,6 @@ class CustomerTests(BaseAPITestCase):
 
     def test_patch_not_allowed(self):
         customer = self.create_customer()
-        url = reverse('api:customer-detail', args=[customer.ssn])
+        url = reverse('api:customer-detail', args=[customer.id])
         response = self.client.patch(url, {'name': 'Updated Customer'})
         self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED) 

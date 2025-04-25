@@ -22,7 +22,7 @@ class AccountTests(BaseAPITestCase):
         url = reverse('api:account-list')
         data = {
             'client': self.client_model.id,
-            'customer': self.customer.ssn,
+            'customer': self.customer.id,
             'balance': 1000.00
         }
         response = self.client.post(url, data, format='json')

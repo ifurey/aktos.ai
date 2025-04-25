@@ -3,10 +3,11 @@ from django.core.validators import RegexValidator
 
 
 class Customer(models.Model):
-    """Customer model"""
+    """Customer model. The person(s)/entities that owe a debt."""
+    id = models.AutoField(primary_key=True) 
     ssn = models.CharField(
         max_length=11,
-        primary_key=True,
+        unique=True,
         validators=[
             RegexValidator(
                 regex=r'^\d{3}-\d{2}-\d{4}$',
