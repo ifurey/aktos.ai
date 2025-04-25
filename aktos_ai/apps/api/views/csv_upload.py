@@ -6,6 +6,7 @@ from django.db import transaction
 from rest_framework import viewsets, status, mixins
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.parsers import MultiPartParser, FormParser
 
 from ..models import Client, Customer, Account
 from ..schemas.csv_upload import CSVUploadSerializer
@@ -13,11 +14,11 @@ from ..schemas.csv_upload import CSVUploadSerializer
 
 class CSVUploadViewSet(viewsets.GenericViewSet):
     serializer_class = CSVUploadSerializer
+    parser_classes = (MultiPartParser, FormParser)
 
     # TODO: CSV Upload need file sanitization and validation to avoid malicious files that could exploit CSV Injection,
     #  Memory Exhaustion and  Type Spoofing attacks.
-    @action(detail=False, methods=['post'], url_path='upload-csv')
-    def upload_csv(self, request):
+    def create(self, request, *args, **kwargs):
         serializer = CSVUploadSerializer(data=request.data)
         if not serializer.is_valid():
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
