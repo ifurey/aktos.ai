@@ -17,3 +17,5 @@ REST_FRAMEWORK = {
         'rest_framework.filters.OrderingFilter',
     ],
 } 
+
+# TODO: Authentication and Authorization missing.

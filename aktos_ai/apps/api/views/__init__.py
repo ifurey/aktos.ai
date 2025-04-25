@@ -13,4 +13,5 @@ def api_root(request, format=None):
         'clients': reverse('api:client-list', request=request, format=format),
         'customers': reverse('api:customer-list', request=request, format=format),
         'accounts': reverse('api:account-list', request=request, format=format),
+        'csv_upload': reverse('api:csv-upload', request=request, format=format),
     }) 
